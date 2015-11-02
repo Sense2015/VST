@@ -53,8 +53,6 @@ namespace VoiceSymbol
         private void testFunction(object sender, EventArgs e)
         {
 
-            //Canvas.SetLeft(ellipse, eyex * canvas2.Width / 1920);
-            //Canvas.SetTop(ellipse, eyey * canvas2.Height / 1080);
             Canvas.SetLeft(ellipse, eyex - 0);
             Canvas.SetTop(ellipse, eyey - 0);
             
