@@ -45,11 +45,7 @@ namespace VoiceSymbol
             ellipse.Height = 10;
             this.Show();
             this.EyeEllipseCanvas.Children.Add(ellipse);
-            //dot2 = new Thread(DrawDot);
-            //dot2.SetApartmentState(ApartmentState.STA);
             dot.Start();
-            //dot2.Start();
-
             m_timer = new System.Windows.Threading.DispatcherTimer();
             m_timer.Tick += new EventHandler(testFunction);
             m_timer.IsEnabled = true;
