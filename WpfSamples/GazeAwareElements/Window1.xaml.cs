@@ -28,7 +28,7 @@ namespace VoiceSymbol
         {
             win.canvasdraw();
             Global.count++;
-            if (Global.count >= 9) Global.count = 0;
+            if (Global.count >= Global.DataNum) Global.count = 0;
             this.Close();
         }
         private void x00_Click(object sender, RoutedEventArgs e)
@@ -73,7 +73,7 @@ namespace VoiceSymbol
         //清除
         private void _delete_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < Global.DataNum; i++)
             {
                 Global.content[i] = null;
             }
@@ -83,7 +83,7 @@ namespace VoiceSymbol
         //念整句
         private void _say_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < Global.DataNum; i++)
             {
                 Console.Write(Global.content[i] + ",");
             }
@@ -99,9 +99,9 @@ namespace VoiceSymbol
             canvas1.Children.Clear();
             int i = 0;
 
-            while (Global.content[i] != null && i < 9)
+            while (Global.content[i] != null && i < Global.DataNum)
             {
-                double width = (this.canvas1.ActualWidth - (9 + 1) * 5) / 9;
+                double width = (this.canvas1.ActualWidth - (Global.DataNum + 1) * 5) / Global.DataNum;
                 double height = (this.canvas1.ActualHeight - (1 + 1) * 5) / 1;
                 Image ig = new Image()
                 {
@@ -114,7 +114,7 @@ namespace VoiceSymbol
 
                 ig.Source = ((Image)TryFindResource(Global.content[i])).Source;
                 i++;
-                if (i == 9) break;
+                if (i == Global.DataNum) break;
             }
         }
     }

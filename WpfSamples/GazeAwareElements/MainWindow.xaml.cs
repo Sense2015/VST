@@ -46,7 +46,7 @@ namespace VoiceSymbol
         public void viewclose()
         {
             Global.count++;
-            if (Global.count >= 9) Global.count = 0;
+            if (Global.count >= Global.DataNum) Global.count = 0;
         }
         //我要吃
         private void m00_Click(object sender, RoutedEventArgs e)
@@ -96,14 +96,15 @@ namespace VoiceSymbol
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            SV.HorizontalScrollBarVisibility =ScrollBarVisibility.Hidden;
             EyeCanvas EC = new EyeCanvas();
-            //EC.Show();
+            EC.Show();
         }
         
         //念整句
         private void c20_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < Global.DataNum; i++)
             {
                 Console.Write(Global.content[i] + ",");
             }
@@ -122,7 +123,7 @@ namespace VoiceSymbol
         //清除
         private void _delete_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < Global.DataNum; i++)
             {
                 Global.content[i] = null;
             }
@@ -173,7 +174,7 @@ namespace VoiceSymbol
         //清除
         private void c10_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < Global.DataNum; i++)
             {
                 Global.content[i] = null;
             }
@@ -210,9 +211,9 @@ namespace VoiceSymbol
         {
             canvas1.Children.Clear();
             int i = 0;
-            while (Global.content[i] != null && i < 9)
+            while (Global.content[i] != null && i < Global.DataNum)
             {
-                double width = (this.canvas1.ActualWidth - (9 + 1) * 5) / 9;
+                double width = (this.canvas1.ActualWidth - (Global.DataNum + 1) * 5) / Global.DataNum;
                 double height = (this.canvas1.ActualHeight - (1 + 1) * 5) / 1;
                 Image ig = new Image()
                 {
@@ -220,12 +221,13 @@ namespace VoiceSymbol
                     Height = height,
                 };
                 canvas1.Children.Add(ig);
+                this.canvas1.Width = this.canvas1.ActualWidth + width;
                 Canvas.SetTop(ig, 0 * height + 5);
                 Canvas.SetLeft(ig, i * width + 5);
 
                 ig.Source = ((Image)TryFindResource(Global.content[i])).Source;
                 i++;
-                if (i == 9) break;
+                if (i == Global.DataNum) break;
             }
         }
         

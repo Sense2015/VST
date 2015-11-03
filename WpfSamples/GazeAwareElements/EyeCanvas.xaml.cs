@@ -37,10 +37,10 @@ namespace VoiceSymbol
             dot = new Thread(Eyetracking);
             ellipse = new Ellipse();
             SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-            mySolidColorBrush.Color = Color.FromArgb(255, 255, 255, 0);
+            mySolidColorBrush.Color = Color.FromArgb(200, 255, 255, 0);
             ellipse.Fill = mySolidColorBrush;
             ellipse.StrokeThickness = 2;
-            ellipse.Stroke = Brushes.Black;
+            ellipse.Stroke = Brushes.Red;
             ellipse.Width = 10;
             ellipse.Height = 10;
             this.Show();
@@ -55,7 +55,6 @@ namespace VoiceSymbol
 
             Canvas.SetLeft(ellipse, eyex - 0);
             Canvas.SetTop(ellipse, eyey - 0);
-            
             //Console.WriteLine("x:" + eyex.ToString() + "- y:" + eyey.ToString());
         }
         public void Eyetracking()
