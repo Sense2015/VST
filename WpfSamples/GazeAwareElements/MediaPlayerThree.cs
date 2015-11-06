@@ -7,6 +7,7 @@ using System.Windows.Media;
 
 namespace VoiceSymbol
 {
+    
     class MediaPlayerThree
     {
         public static void play(string p)
@@ -17,7 +18,6 @@ namespace VoiceSymbol
             player.Play();
             player.MediaEnded += new EventHandler(player_MediaEnded);
         }
-
         public static void player_MediaEnded(object sender, EventArgs e)
         {
             Console.WriteLine("撥放完畢:" + Global.path);

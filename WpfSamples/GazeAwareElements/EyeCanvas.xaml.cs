@@ -18,9 +18,7 @@ using Tobii.EyeX.Framework;
 
 namespace VoiceSymbol
 {
-    /// <summary>
-    /// Window5.xaml 的互動邏輯
-    /// </summary>
+    
     public partial class EyeCanvas : Window
     {
         Thread dot;
@@ -37,22 +35,23 @@ namespace VoiceSymbol
             dot = new Thread(Eyetracking);
             ellipse = new Ellipse();
             SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-            mySolidColorBrush.Color = Color.FromArgb(200, 255, 255, 0);
+            mySolidColorBrush.Color = Color.FromArgb(100, 255, 255, 0);
             ellipse.Fill = mySolidColorBrush;
-            ellipse.StrokeThickness = 2;
-            ellipse.Stroke = Brushes.Red;
+            //邊框
+            //ellipse.StrokeThickness = 2;
+            //ellipse.Stroke = Brushes.Red;
             ellipse.Width = 10;
             ellipse.Height = 10;
-            this.Show();
+            //this.Show();
             this.EyeEllipseCanvas.Children.Add(ellipse);
             dot.Start();
             m_timer = new System.Windows.Threading.DispatcherTimer();
             m_timer.Tick += new EventHandler(testFunction);
+            m_timer.Interval = new TimeSpan(0, 0, 0 ,0,1);  //0.001seconds
             m_timer.IsEnabled = true;
         }
-        private void testFunction(object sender, EventArgs e)
+        public void testFunction(object sender, EventArgs e)
         {
-
             Canvas.SetLeft(ellipse, eyex - 0);
             Canvas.SetTop(ellipse, eyey - 0);
             //Console.WriteLine("x:" + eyex.ToString() + "- y:" + eyey.ToString());
