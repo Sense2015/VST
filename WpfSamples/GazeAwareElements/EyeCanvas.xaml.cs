@@ -47,7 +47,7 @@ namespace VoiceSymbol
             dot.Start();
             m_timer = new System.Windows.Threading.DispatcherTimer();
             m_timer.Tick += new EventHandler(testFunction);
-            m_timer.Interval = new TimeSpan(0, 0, 0 ,0,1);  //0.001seconds
+            m_timer.Interval = new TimeSpan(0, 0, 0, 0, 1);  //0.001seconds
             m_timer.IsEnabled = true;
         }
         public void testFunction(object sender, EventArgs e)
